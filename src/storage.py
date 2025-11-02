@@ -122,6 +122,10 @@ class RedisStorage:
     async def delete_url(self, short_code: str) -> bool:
         """Delete URL mapping."""
         try:
+            # Check if URL exists first
+            if not await self.exists(short_code):
+                return False
+            
             pipe = self.client.pipeline()
             pipe.delete(f"url:{short_code}")
             pipe.delete(f"meta:{short_code}")

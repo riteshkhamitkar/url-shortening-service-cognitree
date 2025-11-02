@@ -1,13 +1,17 @@
 import pytest
-from httpx import AsyncClient
+import pytest_asyncio
+from httpx import AsyncClient, ASGITransport
 from fakeredis import aioredis as fakeredis
 
 from src.main import app
 from src.storage import storage
 from src.config import settings
 
+# Configure pytest-asyncio
+pytest_plugins = ('pytest_asyncio',)
 
-@pytest.fixture
+
+@pytest_asyncio.fixture
 async def redis_client():
     """Provide fake Redis client for testing."""
     fake_redis = await fakeredis.FakeRedis(decode_responses=True)
@@ -16,17 +20,17 @@ async def redis_client():
     await fake_redis.aclose()
 
 
-@pytest.fixture
+@pytest_asyncio.fixture
 async def test_storage(redis_client):
     """Provide storage instance with fake Redis."""
     storage.client = redis_client
     yield storage
 
 
-@pytest.fixture
+@pytest_asyncio.fixture
 async def client(test_storage):
     """Provide async HTTP client for testing."""
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
         yield ac
 
 

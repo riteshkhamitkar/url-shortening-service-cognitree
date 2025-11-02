@@ -4,13 +4,13 @@ Minimal, production-ready URL shortener built with FastAPI and Redis Cloud.
 
 ## Features
 
-- ⚡ **Fast**: <5ms latency, 10k+ req/s
-- 🔗 **Custom Codes**: Support for custom short codes
-- 📊 **Click Tracking**: Real-time statistics
-- ⏰ **Auto-Expiry**: URLs expire after 30 days (configurable)
-- 🛡️ **Rate Limiting**: 100 requests/minute per IP
-- ☁️ **Cloud Ready**: Uses Redis Cloud (free tier)
-- ✅ **Well Tested**: 31 tests, 95%+ coverage
+- **Fast**: <5ms latency, 10k+ req/s
+- **Custom Codes**: Support for custom short codes
+- **Click Tracking**: Real-time statistics
+- **Auto-Expiry**: URLs expire after 30 days (configurable)
+- **Rate Limiting**: 100 requests/minute per IP
+- **Cloud Ready**: Uses Redis Cloud (free tier)
+- **Well Tested**: 31 tests, 95%+ coverage
 
 ## Quick Start
 

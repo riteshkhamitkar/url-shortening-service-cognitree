@@ -22,9 +22,6 @@ class RedisStorage:
         self.pool = ConnectionPool.from_url(
             settings.redis_url,
             max_connections=settings.redis_max_connections,
-            socket_keepalive=settings.redis_socket_keepalive,
-            socket_connect_timeout=settings.redis_socket_connect_timeout,
-            health_check_interval=settings.redis_health_check_interval,
             decode_responses=True,
         )
         self.client = redis.Redis(connection_pool=self.pool)

@@ -21,9 +21,6 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         self.last_cleanup = time.time()
 
     async def dispatch(self, request: Request, call_next):
-        if not settings.rate_limit_enabled:
-            return await call_next(request)
-
         # Skip rate limiting for health checks
         if request.url.path in ["/health", "/metrics"]:
             return await call_next(request)

@@ -14,7 +14,7 @@ Minimal, production-ready URL shortener built with FastAPI and Redis Cloud.
 
 ## Quick Start
 
-### 1. Clone and Install
+### 1. Clone and Install dependencies
 ```bash
 git clone https://github.com/riteshkhamitkar/url-shortening-service-cognitree.git
 cd url-shortening-service-cognitree
